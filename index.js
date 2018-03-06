@@ -3,23 +3,31 @@
         up: "chevron-up",
         down: "chevron-down"
     };
-    var hiddenClass = "hidden";
-    var handlers = document.getElementsByClassName("collapsible-dl__title");
+    var hiddenClass = "closed";
+    var handlerClassName = "collapsible-dl__title";
+    var iconClassName = "collapsible-dl__icon";
+
+    var handlers = document.getElementsByClassName(handlerClassName);
+
     for (var i=0;i<handlers.length;i++) {
         handlers[i].addEventListener("click", function(e) {
             var detail, icon;
             e.preventDefault();
             e.stopPropagation();
 
-            detail = e.currentTarget.parentNode.getElementsByClassName("collapsible-dl__detail")[0];
+            detail = e.currentTarget.parentNode;
             if (hasClass(detail, hiddenClass)) {
                 removeClass(detail, hiddenClass);
             } else {
                 addClass(detail, hiddenClass);
             }
-            icon = e.currentTarget.getElementsByClassName("collapsible-dl__handler")[0];
+            icon = e.currentTarget.getElementsByClassName(iconClassName)[0];
             changeIconClass(icon);
         });
+    }
+
+    function getClassNameRE(className) {
+        return new RegExp('(\\s|^)' + className + '(\\s|$)');
     }
 
     function changeIconClass(elem) {
@@ -31,8 +39,7 @@
     }
 
     function hasClass(elem, className) {
-        var rg = new RegExp('(\\s|^)' + className + '(\\s|$)')
-        return elem.className.match(rg);
+        return elem.className.match(getClassNameRE(className));
     }
     function addClass(elem, className) {
         if (!hasClass(elem, className)) {
@@ -41,7 +48,6 @@
         }
     }
     function removeClass(elem, className) {
-        var rg = new RegExp('(\\s|^)' + className + '(\\s|$)')
-        elem.className = elem.className.replace(rg, "");
+        elem.className = elem.className.replace(getClassNameRE(className), "");
     }
 })()

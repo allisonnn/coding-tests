@@ -39,20 +39,21 @@ h3 {
     margin-bottom: @space;
 }
 
-.hidden {
-    display: none;
-}
-
 .collapsible-dl {
-    margin: 0 0 @space 0;
+    margin: 0 0 @space/2 0;
     padding: @space;
     border: .1rem solid @grey;
     border-radius: @default-border-radius;
     width: 100%;
 }
 
+.collapsible-dl.closed > .collapsible-dl__detail {
+    display: none;
+}
+
 .collapsible-dl__title {
     position: relative;
+    line-height: 4rem;
     cursor: pointer;
 }
 
@@ -62,18 +63,28 @@ h3 {
     padding-right: @space;
 }
 
+// .collapsible-dl__title-pref[data-risk-score] {
+//     color: @red;
+//     content: attr(data-risk-score);
+// }
+
 .collapsible-dl__title-content {
     margin-left: @space;
 }
 
-.collapsible-dl__handler {
+.collapsible-dl__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
     color: @grey;
     font-size: @space;
-    float: right;
 }
 
 .collapsible-dl__detail {
     margin-left: @space*4;
+    padding: @space 0;
+    border-top: .1rem solid @grey;
     color: @grey;
     font-weight: 400;
     font-style:italic;
