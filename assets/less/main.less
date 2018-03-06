@@ -1,0 +1,90 @@
+@red: #DE4D33;
+@green: #42996D;
+@black: #3F3D3C;
+@grey: #E3E3E3;
+@positive-color: @green;
+@negative-color: @red;
+@default-border-radius: .4rem;
+@space: 1.2rem;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: @black;
+}
+
+section {
+    margin: 2rem @space;
+    padding: .5rem @space;
+    border: .1rem solid @grey;
+    border-radius: @default-border-radius;
+    max-width: 100%;
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: @space;
+}
+
+.hidden {
+    display: none;
+}
+
+.collapsible-dl {
+    margin: 0 0 @space 0;
+    padding: @space;
+    border: .1rem solid @grey;
+    border-radius: @default-border-radius;
+    width: 100%;
+}
+
+.collapsible-dl__title {
+    position: relative;
+    cursor: pointer;
+}
+
+.collapsible-dl__title-pref {
+    color: @black;
+    border-right: .2rem solid @black;
+    padding-right: @space;
+}
+
+.collapsible-dl__title-content {
+    margin-left: @space;
+}
+
+.collapsible-dl__handler {
+    color: @grey;
+    font-size: @space;
+    float: right;
+}
+
+.collapsible-dl__detail {
+    margin-left: @space*4;
+    color: @grey;
+    font-weight: 400;
+    font-style:italic;
+}
+
+.collapsible-dl--negative > .collapsible-dl__title > .collapsible-dl__title-pref {
+    color: @negative-color;
+    border-color: @negative-color;
+}
+
+.collapsible-dl--positive > .collapsible-dl__title > .collapsible-dl__title-pref {
+    color: @positive-color;
+    border-color: @positive-color;
+}
